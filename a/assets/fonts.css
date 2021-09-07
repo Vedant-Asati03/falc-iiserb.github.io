@@ -4,3 +4,10 @@
     font-weight: bold;
     font-style: normal;
 }
+
+@font-face {
+    font-family: 'bdfUM';
+    src: url('fonts/bdfUM.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}

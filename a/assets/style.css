@@ -6,15 +6,49 @@ body {
 	background-color: black;
 }
 
-.flex-container {
-  display: flex;
-  background-color: DodgerBlue;
-  align-items: center;
+header {
+  font-size: 50px;
 }
 
-.flex-container > div {
-  background-color: #f1f1f1;
+.first-container {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.first-container > .item {
   margin: 10px;
-  padding: 20px;
-  font-size: 30px;
+}
+
+.first-container > .item1 {
+  background-image: url(img/al-logo.png);
+  height: 300px;
+  width: 300px;
+  background-size: cover;
+}
+.first-container > .item2 {
+  color: rgb(255, 232, 28); 
+  font-size: 150px; 
+  text-align: center;
+}
+
+.first-container > .item3 {
+  background-image: url(img/watch.svg); 
+  background-repeat: no-repeat; 
+  background-size: cover;
+  height: 400px;
+  width: 300px;
+  margin-top: auto;
+  margin-bottom: auto;
+  scale: 1.5;
+}
+
+p {
+  text-align: center;
+}
+
+#timer {
+  font-size: 40px;
 }
