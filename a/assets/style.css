@@ -28,10 +28,16 @@ header {
   width: 300px;
   background-size: cover;
 }
+
 .first-container > .item2 {
   color: rgb(255, 232, 28); 
   font-size: 150px; 
   text-align: center;
+}
+@media (max-width: 1000px) {
+  .first-container > .item2 {
+    font-size: 100px;
+  }
 }
 
 .first-container > .item3 {
