@@ -36,7 +36,7 @@ header {
 }
 @media (max-width: 1000px) {
   .first-container > .item2 {
-    font-size: 100px;
+    font-size: 90px;
   }
 }
 
