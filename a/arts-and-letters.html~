@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="">
+	<head>
+    <meta charset="utf-8">
+    <title></title>
+    <!--<link rel="stylesheet" type="font/css" src="assets/fonts.css">-->
+    <link rel="stylesheet" type="text/css" src="assets/style.css">
+	</head>
+	<body>
+    <header>
+    	<div class="flex-container">
+			<div>Logo here</div>
+    		<div style="font-family: Alkhemikal;">ARTS<br>AND<br>LETTERS</div>
+    		<div>Timer here</div>
+    	</div>
+    	Hey there everyone.
+    </header>
+    <main></main>
+    <footer></footer>
+  </body>
+</html>
+
