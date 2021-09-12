@@ -35,9 +35,6 @@ header {
   text-align: center;
 }
 @media (max-width: 1000px) {
-  .first-container > .item1 {
-    background-image: url(img/AL_logo_black.png);
-  }
   .first-container > .item2 {
     font-size: 90px;
   }
@@ -77,4 +74,18 @@ p {
   height: 400px;
   width: 300px;
   border: 5px solid black;
+  border-radius: 12px;
+}
+
+.nest85 {
+  height: 85%;
+  width: 100%;
+  border-bottom: 2px dashed blue;
+}
+
+.nest15 {
+  height: 15%;
+}
+.nest15:hover {
+  background-color: black;
 }
