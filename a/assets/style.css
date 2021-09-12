@@ -71,17 +71,17 @@ p {
   border: 5px solid black;
   border-radius: 12px;
   background-color: rgba(253, 253, 253, 0.5);
-
 }
 
 .nest85 {
   height: 85%;
   width: 100%;
-  border-bottom: 2px dashed blue;
 }
 
 .nest15 {
+  border-radius: 10px;
   height: 15%;
+  border-top: 2px dashed blue;
 }
 .nest15:hover {
   background-color: black;

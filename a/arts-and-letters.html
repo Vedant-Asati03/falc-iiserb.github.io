@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html lang="">
 	<head>
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <title></title>
     <script type="text/javascript" src="assets/js/timer.js"></script>
+    <script type="text/javascript" src="assets/js/tabs.js"></script>
     <link href="assets/fonts.css" type="text/css" rel="stylesheet">
     <link href="assets/style.css" type="text/css" rel="stylesheet">
     <link href="assets/style-extra.css" type="text/css" rel="stylesheet">
-	</head>
-	<body>
+    <link href="assets/tab-style.css" type="text/css" rel="stylesheet">
+	
+  </head>
+	
+  
+  <body>
+    
     <header style="background-repeat: no-repeat; background-image: url(assets/img/scenery.svg); background-size: cover; min-height: 100vh;">
     	<div class="first-container">
 			  <div class="item item1"></div>
@@ -21,6 +28,7 @@
         </div>
     	</div>
     </header>
+    
     <main>
 
       <div style="background-repeat: no-repeat; background-image: url(assets/img/scenery.svg); background-size: cover; min-height: 100vh; margin-top: -12px; border-top-left-radius: 12px; border-top-right-radius: 12px;">
@@ -34,6 +42,26 @@
       </div>
 
       <div style="background-repeat: no-repeat; background-image: url(assets/img/scenery.svg); background-size: cover; min-height: 100vh;">
+        <div class="tab">
+          <button class="tablinks" onclick="dayEvent(event, 'day_1')">Day 1</button>
+          <button class="tablinks" onclick="dayEvent(event, 'day_2')">Day 2</button>
+          <button class="tablinks" onclick="dayEvent(event, 'day_3')">Day 3</button>
+        </div>
+        
+        <div id="day_1" class="tabcontent">
+          <h3>London</h3>
+          <p>London is the capital city of England.</p>
+        </div>
+        
+        <div id="day_2" class="tabcontent">
+          <h3>Paris</h3>
+          <p>Paris is the capital of France.</p> 
+        </div>
+        
+        <div id="day_3" class="tabcontent">
+          <h3>Tokyo</h3>
+          <p>Tokyo is the capital of Japan.</p>
+        </div>
         <div><h1 style="text-align: center; margin: 0;">DAY 1</h1></div>
         <div class="merch-container space-sides">
           <div class="item item1"><div class="nest85"></div><div class="nest15"></div></div>
@@ -46,8 +74,11 @@
           <div class="item item8"><div class="nest85"></div><div class="nest15"></div></div>
         </div>
       </div>
+    
     </main>
+    
     <footer></footer>
+    
   </body>
 </html>
 
