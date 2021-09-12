@@ -88,12 +88,11 @@ p {
 }
 
 .trailer-embed {
-  margin-top: 20%;
   border: 3px solid green;
   border-radius: 12px;
-  padding: 30px 50px 30px 50px;
+  margin: 250px 50px 30px 50px;
   height: 800px;
-  width: 1300px;
+  width: 85%;
 }
 
 @media (max-width: 1000px) {
@@ -102,8 +101,9 @@ p {
   }
 
   .trailer-embed {
-    padding: 0;
+    margin: 0;
     height: 300px;
     width: 100%;
+    margin-bottom: 100px;
   }
 }
