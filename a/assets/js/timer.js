@@ -18,7 +18,7 @@ var x = setInterval(function() {
     
   // Output the result in an element with id="demo"
   document.getElementById("timer").innerHTML = days + ":" + hours + ":"
-  + minutes + ":" + seconds + "<pre style=\"font-family: bdfUM; font-size:20px; margin-top: -5px;\">days  hrs mins secs</pre>";
+  + minutes + ":" + seconds + "<pre style=\"font-family: bdfUM; font-size:20px; margin-top: -5px;\">days  hrs  mins  secs</pre>";
     
   // If the count down is over, write some text 
   if (distance < 0) {
