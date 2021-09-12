@@ -34,11 +34,6 @@ header {
   font-size: 200px; 
   text-align: center;
 }
-@media (max-width: 1000px) {
-  .first-container > .item2 {
-    font-size: 90px;
-  }
-}
 
 .first-container > .item3 {
   background-image: url(img/watch.svg); 
@@ -88,4 +83,25 @@ p {
 }
 .nest15:hover {
   background-color: black;
+}
+
+.trailer-embed {
+  margin-top: 20%;
+  border: 3px solid green;
+  border-radius: 12px;
+  padding: 30px 50px 30px 50px;
+  height: 800px;
+  width: 1300px;
+}
+
+@media (max-width: 1000px) {
+  .first-container > .item2 {
+    font-size: 90px;
+  }
+
+  .trailer-embed {
+    padding: 0;
+    height: 300px;
+    width: 400px;
+  }
 }
