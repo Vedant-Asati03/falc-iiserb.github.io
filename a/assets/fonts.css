@@ -11,3 +11,10 @@
     font-weight: bold;
     font-style: normal;
 }
+
+@font-face {
+    font-family: 'haxrcorp';
+    src: url('fonts/wizard.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 300;
+}
