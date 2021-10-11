@@ -1,12 +1,13 @@
 .tab {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
-  .tab button {
+.tab button {
+    margin: 3px;
     background-color: inherit;
     float: left;
     border: none;
@@ -15,26 +16,33 @@
     cursor: pointer;
     padding: 14px 16px;
     transition: 0.3s;
-  }
-  
-  .tab button:hover {
-    border: 3px solid yellow;
-  }
-  
-  .tab button.active {
-    background-color: #ccc;
-  }
-  
-  .tabcontent {
+    border: 1px solid transparent;
+    color: white;
+}
+
+.tablinks>a {
+    color: black;
+    text-decoration: none;
+}
+
+.tab button:hover {
+    border: 1px solid black;
+}
+
+.tab button.active {
+    background-color: rgba(20, 20, 20, 0.6);
+}
+
+.tabcontent {
     display: none;
     padding: 6px 12px;
     border-top: none;
-  }
+}
 
-  .tab-default {
+.tab-default {
     display: block;
-  }
+}
 
-  .tl-default {
+.tl-default {
     background-color: white;
-  }
+}

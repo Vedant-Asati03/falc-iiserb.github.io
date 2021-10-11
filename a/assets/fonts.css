@@ -18,3 +18,9 @@
     font-style: normal;
     font-weight: 300;
 }
+
+@font-face {
+    font-family: 'born2';
+    src: url('fonts/born2.ttf') format('truetype');
+    font-style: normal;
+}

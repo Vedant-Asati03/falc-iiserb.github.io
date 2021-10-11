@@ -1,0 +1,99 @@
+}
+
+.first-container {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.first-container > .item {
+  margin: 10px;
+}
+
+.first-container > .item1 {
+  background-image: url(img/AL_logo_white.png);
+  height: 300px;
+  width: 300px;
+  background-size: cover;
+}
+
+.first-container > .item2 {
+  color: black; 
+  font-size: 200px; 
+  text-align: center;
+}
+
+.first-container > .item3 {
+  background-image: url(img/watch.svg); 
+  background-repeat: no-repeat; 
+  background-size: cover;
+  height: 400px;
+  width: 300px;
+  margin-top: auto;
+  margin-bottom: auto;
+  scale: 1.5;
+}
+
+p {
+  text-align: center;
+}
+
+#timer {
+  font-size: 40px;
+}
+
+
+/* For merchs ---------------------------------------*/
+.merch-container {
+  display: flex;
+  min-height: 100vh;
+  align-items:baseline;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.merch-container > .item {
+  margin: 10px;
+  height: 400px;
+  width: 300px;
+  border: 5px solid black;
+  border-radius: 12px;
+  background-color: rgba(253, 253, 253, 0.5);
+}
+
+.nest85 {
+  height: 85%;
+  width: 100%;
+}
+
+.nest15 {
+  border-radius: 10px;
+  height: 15%;
+  border-top: 2px dashed blue;
+}
+.nest15:hover {
+  background-color: black;
+}
+
+.trailer-embed {
+  border: 3px solid green;
+  border-radius: 12px;
+  margin: 250px 50px 30px 50px;
+  height: 800px;
+  width: 85%;
+}
+
+@media (max-width: 1000px) {
+  .first-container > .item2 {
+    font-size: 90px;
+  }
+
+  .trailer-embed {
+    margin: 0;
+    height: 300px;
+    width: 100%;
+    margin-bottom: 100px;
+  }
+}

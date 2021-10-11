@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="">
-	<head>
+
+<head>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
@@ -11,86 +12,178 @@
     <link href="assets/style.css" type="text/css" rel="stylesheet">
     <link href="assets/style-extra.css" type="text/css" rel="stylesheet">
     <link href="assets/tab-style.css" type="text/css" rel="stylesheet">
-	
-  </head>
-	
-  
-  <body>
-    
-    <header style="background-repeat: no-repeat; background-image: url(assets/img/scenery.svg); background-size: cover; min-height: 100vh;">
-        <div class="tab">
-            <button class="tablinks"><a href="arts-and-letters.html"><div><h1 style="text-align: center; margin: 0;">Home</h1></div></a></button>
-            <button class="tablinks active"><div><h1 style="text-align: center; margin: 0;">Events</h1></div></button>
-            <button class="tablinks"><a href="feature.html"><div><h1 style="text-align: center; margin: 0;">Feature</h1></div></a></button>
-          </div>
-    	<div class="first-container">
-			  <div class="item item1"></div>
-    		<div class="item item2" style="font-family: Alkhemikal;">ARTS<br>&<br><small>LETTERS'21</small></div>
-    		<div class="item item3">
-          <div style="padding: 40% 10% 40% 10%;">
-          <p id="timer" style="font-family: bdfUM;"></p>
-          </div>
-        </div>
-    	</div>
-    </header>
 
-      <div style="background-repeat: no-repeat; background-image: url(assets/img/scenery.svg); background-size: cover; min-height: 100vh;">
+</head>
+
+
+<body>
+
+    <header>
         <div class="tab">
-          <button class="tablinks active" onclick="dayEvent(event, 'day_1')"><div><h1 style="text-align: center; margin: 0;">DAY 1</h1></div></button>
-          <button class="tablinks" onclick="dayEvent(event, 'day_2')"><div><h1 style="text-align: center; margin: 0;">DAY 2</h1></div></button>
-          <button class="tablinks" onclick="dayEvent(event, 'day_3')"><div><h1 style="text-align: center; margin: 0;">DAY 3</h1></div></button>
+            <button class="tablinks"><a href="arts-and-letters.html">
+                    <div>
+                        <h1 style="text-align: center; margin: 0;">Home</h1>
+                    </div>
+                </a></button>
+            <button class="tablinks active">
+                <div>
+                    <h1 style="text-align: center; margin: 0;">Events</h1>
+                </div>
+            </button>
+            <button class="tablinks"><a href="feature.html">
+                    <div>
+                        <h1 style="text-align: center; margin: 0;">Feature</h1>
+                    </div>
+                </a></button>
         </div>
-        
+        <div class="first-container">
+            <div class="item item1"></div>
+            <div class="item item2" style="font-family: Alkhemikal;">ARTS<br>&<br><small>LETTERS'21</small></div>
+            <div class="item item3">
+                <div style="padding: 40% 10% 40% 10%;">
+                    <p id="timer" style="font-family: bdfUM;"></p>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="tab">
+            <button class="tablinks active" onclick="dayEvent(event, 'day_1')">
+                <div>
+                    <h1 style="text-align: center; margin: 0;">DAY 1</h1>
+                </div>
+            </button>
+            <button class="tablinks" onclick="dayEvent(event, 'day_2')">
+                <div>
+                    <h1 style="text-align: center; margin: 0;">DAY 2</h1>
+                </div>
+            </button>
+            <button class="tablinks" onclick="dayEvent(event, 'day_3')">
+                <div>
+                    <h1 style="text-align: center; margin: 0;">DAY 3</h1>
+                </div>
+            </button>
+        </div>
+
         <div id="day_1" class="tabcontent tab-default">
-          <p>Day 1</p>
-          <div class="merch-container space-sides">
-            <div class="item item1"><div class="nest85"></div><div class="nest15"></div></div>
-            <div class="item item2"><div class="nest85"></div><div class="nest15"></div></div>
-            <div class="item item3"><div class="nest85"></div><div class="nest15"></div></div>
-            <div class="item item4"><div class="nest85"></div><div class="nest15"></div></div>
-            <div class="item item5"><div class="nest85"></div><div class="nest15"></div></div>
-            <div class="item item6"><div class="nest85"></div><div class="nest15"></div></div>
-            <div class="item item7"><div class="nest85"></div><div class="nest15"></div></div>
-            <div class="item item8"><div class="nest85"></div><div class="nest15"></div></div>
-          </div>
+            <p>Day 1</p>
+            <div class="merch-container space-sides">
+                <div class="item item1">
+                    <div class="nest85"></div>
+                    <div class="nest15"></div>
+                </div>
+                <div class="item item2">
+                    <div class="nest85"></div>
+                    <div class="nest15"></div>
+                </div>
+                <div class="item item3">
+                    <div class="nest85"></div>
+                    <div class="nest15"></div>
+                </div>
+                <div class="item item4">
+                    <div class="nest85"></div>
+                    <div class="nest15"></div>
+                </div>
+                <div class="item item5">
+                    <div class="nest85"></div>
+                    <div class="nest15"></div>
+                </div>
+                <div class="item item6">
+                    <div class="nest85"></div>
+                    <div class="nest15"></div>
+                </div>
+                <div class="item item7">
+                    <div class="nest85"></div>
+                    <div class="nest15"></div>
+                </div>
+                <div class="item item8">
+                    <div class="nest85"></div>
+                    <div class="nest15"></div>
+                </div>
+            </div>
         </div>
-        
+
         <div id="day_2" class="tabcontent">
-          <p>Day 2</p>
-          <div class="merch-container space-sides">
-            <div class="item item1"><div class="nest85"></div><div class="nest15"></div></div>
-            <div class="item item2"><div class="nest85"></div><div class="nest15"></div></div>
-            <div class="item item3"><div class="nest85"></div><div class="nest15"></div></div>
-            <div class="item item4"><div class="nest85"></div><div class="nest15"></div></div>
-            <div class="item item5"><div class="nest85"></div><div class="nest15"></div></div>
-            <div class="item item6"><div class="nest85"></div><div class="nest15"></div></div>
-            <div class="item item7"><div class="nest85"></div><div class="nest15"></div></div>
-            <div class="item item8"><div class="nest85"></div><div class="nest15"></div></div>
-          </div>
+            <p>Day 2</p>
+            <div class="merch-container space-sides">
+                <div class="item item1">
+                    <div class="nest85"></div>
+                    <div class="nest15"></div>
+                </div>
+                <div class="item item2">
+                    <div class="nest85"></div>
+                    <div class="nest15"></div>
+                </div>
+                <div class="item item3">
+                    <div class="nest85"></div>
+                    <div class="nest15"></div>
+                </div>
+                <div class="item item4">
+                    <div class="nest85"></div>
+                    <div class="nest15"></div>
+                </div>
+                <div class="item item5">
+                    <div class="nest85"></div>
+                    <div class="nest15"></div>
+                </div>
+                <div class="item item6">
+                    <div class="nest85"></div>
+                    <div class="nest15"></div>
+                </div>
+                <div class="item item7">
+                    <div class="nest85"></div>
+                    <div class="nest15"></div>
+                </div>
+                <div class="item item8">
+                    <div class="nest85"></div>
+                    <div class="nest15"></div>
+                </div>
+            </div>
         </div>
-        
+
         <div id="day_3" class="tabcontent">
-          <p>Day 3</p>
-          <div class="merch-container space-sides">
-            <div class="item item1"><div class="nest85"></div><div class="nest15"></div></div>
-            <div class="item item2"><div class="nest85"></div><div class="nest15"></div></div>
-            <div class="item item3"><div class="nest85"></div><div class="nest15"></div></div>
-            <div class="item item4"><div class="nest85"></div><div class="nest15"></div></div>
-            <div class="item item5"><div class="nest85"></div><div class="nest15"></div></div>
-            <div class="item item6"><div class="nest85"></div><div class="nest15"></div></div>
-            <div class="item item7"><div class="nest85"></div><div class="nest15"></div></div>
-            <div class="item item8"><div class="nest85"></div><div class="nest15"></div></div>
-          </div>
+            <p>Day 3</p>
+            <div class="merch-container space-sides">
+                <div class="item item1">
+                    <div class="nest85"></div>
+                    <div class="nest15"></div>
+                </div>
+                <div class="item item2">
+                    <div class="nest85"></div>
+                    <div class="nest15"></div>
+                </div>
+                <div class="item item3">
+                    <div class="nest85"></div>
+                    <div class="nest15"></div>
+                </div>
+                <div class="item item4">
+                    <div class="nest85"></div>
+                    <div class="nest15"></div>
+                </div>
+                <div class="item item5">
+                    <div class="nest85"></div>
+                    <div class="nest15"></div>
+                </div>
+                <div class="item item6">
+                    <div class="nest85"></div>
+                    <div class="nest15"></div>
+                </div>
+                <div class="item item7">
+                    <div class="nest85"></div>
+                    <div class="nest15"></div>
+                </div>
+                <div class="item item8">
+                    <div class="nest85"></div>
+                    <div class="nest15"></div>
+                </div>
+            </div>
         </div>
-        
-        
-      </div>
-    
     </main>
-    
+
     <footer></footer>
-    
-  </body>
+
+</body>
+
 </html>
 
 <body>
