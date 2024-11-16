@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>FALC - Homepage</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/Footer-Basic.css">
+    <link rel="stylesheet" href="assets/css/Header-Blue.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="homepage.css">
+    <style>
+        .hero-section {
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;  /* Matches navbar height */
+            margin-top: -80px;  /* Pulls section up under navbar */
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('assets/img/homepage.png');
+            background-position: top center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            z-index: 1;
+        }
+
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(30, 79, 138, 0.85) 0%, rgba(41, 128, 185, 0.85) 100%);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            padding-top: 100px;
+            color: white;
+        }
+
+        .hero-text {
+            color: white;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px;
+            transition: all 0.5s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .feature-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .event-card {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s ease;
+        }
+
+        .event-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .counter {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s ease;
+        }
+
+        .counter.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-family: 'Acme', sans-serif;
+            color: white;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .club-preview {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 50px;
+        }
+
+        .falc-title {
+            font-size: 4em;
+            margin-bottom: 0.2em;
+            margin-left: -5px;
+            color: white;
+            display: inline-block;
+            animation: slideIn 0.5s ease-out forwards;
+        }
+        
+        .falc-container {
+            overflow: hidden;
+            white-space: nowrap;
+            margin-bottom: 2em;
+        }
+
+        .falc-text {
+            display: inline-block;
+            font-size: 1.8em;
+            color: white;
+            animation: expandText 3s ease-out 1s forwards;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        @keyframes expandText {
+            0% {
+                content: "FALC";
+                width: 85px;
+            }
+            20% {
+                content: "FALC";
+                width: 85px;
+            }
+            100% {
+                content: "Fine Arts and Literary Council";
+                width: 100%;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            padding-left: 0 !important;
+        }
+        
+        .navbar-brand img {
+            width: 80px;
+            height: 80px;
+            margin-right: 0;
+        }
+
+        .navbar-collapse {
+            margin-left: 0 !important;  /* Remove the left margin */
+        }
+
+        .navbar-nav {
+            margin-left: 0 !important;  /* Ensure nav items start from left */
+        }
+
+        .container-fluid {
+            padding-left: 15px;  /* Add consistent padding */
+        }
+
+        .typing-text {
+            display: none;
+        }
+
+        .typing-container {
+            margin-bottom: 2em;
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: white }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .navbar {
+            background: rgba(45, 48, 71, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            padding: 0.5rem 2rem;
+        }
+
+        /* Add a wrapper style for the background sections */
+        .bg-wrapper {
+            position: relative;
+            background: var(--gradient-primary);
+            overflow: hidden;
+        }
+
+        .bg-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('assets/img/homepage.png');
+            background-position: top center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            opacity: 0.15;
+            z-index: 1;
+        }
+
+        /* Update feature cards for transparency */
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            color: white;
+        }
+
+        .feature-card h3 {
+            color: white;
+        }
+
+        .feature-card p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Update event cards for transparency */
+        .event-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            color: white;
+        }
+
+        .event-card h3,
+        .event-card p {
+            color: white;
+        }
+
+        .events-section h2 {
+            color: white;
+        }
+
+        .event-card .btn-outline-primary {
+            color: white;
+            border-color: white;
+        }
+
+        .event-card .btn-outline-primary:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--text-dark);
+        }
+
+        /* Adjust section positions */
+        .clubs-section,
+        .events-section {
+            position: relative;
+            z-index: 2;
+        }
+        /* Update wrapper styles */
+        .bg-wrapper {
+            position: relative;
+            background: var(--gradient-primary);
+            overflow: hidden;
+            min-height: 100vh;
+            padding-bottom: 80px;  /* Add padding to prevent abrupt cut-off */
+        }
+
+        .bg-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('assets/img/homepage.png');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            opacity: 0.15;
+            z-index: 1;
+        }
+
+        /* Remove background from individual sections */
+        .hero-section {
+            background: none;
+        }
+
+        .clubs-section,
+        .events-section {
+            position: relative;
+            z-index: 2;
+            padding: 40px 0;
+        }
+
+        /* Update cards for better transparency */
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .event-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .club-preview-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            color: white;
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+        }
+
+        .club-preview-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .club-preview-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 3px solid var(--accent);
+            transition: all 0.3s ease;
+            object-fit: cover;
+        }
+
+        .club-preview-card:hover .club-preview-img {
+            transform: scale(1.1);
+            border-color: white;
+        }
+
+        .club-title {
+            font-size: 1.5rem;
+            margin: 15px 0 10px;
+            color: white;
+        }
+
+        .club-description {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 0;
+        }
+
+        .clubs-dialog {
+            background: rgba(255, 255, 255, 0.05);  /* More transparent */
+            backdrop-filter: blur(8px);
+            border-radius: 30px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .club-preview-card {
+            background: rgba(255, 255, 255, 0.08);  /* More transparent */
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .view-all-btn {
+            background: rgba(255, 255, 255, 0.1);  /* More transparent */
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .club-preview-card .club-title,
+        .club-preview-card .club-description {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .club-logo {
+            margin: -25px -25px 20px -25px;
+            height: 200px;
+            border-radius: 15px 15px 0 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .club-icon {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .event-card:hover .club-icon {
+            transform: scale(1.1);
+        }
+
+        .event-card h3 {
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+
+        .event-card p {
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .clubs-dialog {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(8px);
+            border-radius: 30px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 60px;
+        }
+
+        .view-all-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .view-all-btn:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--text-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .featured-clubs-section {
+            margin-top: 80px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">
+                    <img src="assets/img/falclogo.png">
+                </a>
+                <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="homepage.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="clubs.html">Clubs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="a/arts-and-letters.html">Arts & Letters</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="team.html">Team</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Gallery</a>
+                        </li>
+                    </ul>
+                    <a class="btn btn-light action-button" role="button" 
+                       href="https://www.instagram.com/falc_iiserb" target="_blank">
+                        Follow us
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Wrap the sections with background image -->
+    <div class="bg-wrapper">
+        <section class="hero-section">
+            <div class="container hero-content">
+                <div class="row align-items-center">
+                    <div class="col-md-6 animate-on-scroll">
+                        <div class="falc-container">
+                            <div class="falc-text" data-text="Fine Arts and Literary Council">FALC</div>
+                        </div>
+                        <p class="hero-text">Join IISER Bhopal's vibrant artistic community. Discover various clubs, events, and opportunities to express yourself.</p>
+                        <a href="#clubs" class="btn btn-custom-light">Explore</a>
+                    </div>
+                    <div class="col-md-6 animate-on-scroll">
+                        <img src="assets/img/falclogo.png" alt="FALC Logo" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container my-5 featured-clubs-section">
+            <div class="clubs-dialog">
+                <h2 class="text-center mb-4">Featured Clubs</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="club-preview-card">
+                            <img src="assets/img/aalekhya.png" alt="Aalekhya Club" class="club-preview-img">
+                            <h3 class="club-title">Aalekhya Club</h3>
+                            <p class="club-description">The Fine Arts Club of IISER Bhopal.</p>
+                            <a href="clubs.html#aalekhya" class="btn btn-sm btn-outline-primary">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="club-preview-card">
+                            <img src="assets/img/alankar.png" alt="Alankaar Club" class="club-preview-img">
+                            <h3 class="club-title">Alankaar Club</h3>
+                            <p class="club-description">Music and performance arts society.</p>
+                            <a href="clubs.html#alankaar" class="btn btn-sm btn-outline-primary">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="club-preview-card">
+                            <img src="assets/img/debsoc.png" alt="Debate Society" class="club-preview-img">
+                        <p>A night of melodies featuring our talented musicians.</p>
+                        <a href="#" class="btn btn-sm btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container my-5 featured-clubs-section">
+            <h2 class="text-center mb-4">Featured Clubs</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="club-preview-card">
+                        <img src="assets/img/aalekhya.png" alt="Aalekhya Club" class="club-preview-img">
+                        <h3 class="club-title">Aalekhya Club</h3>
+                        <p class="club-description">The Fine Arts Club of IISER Bhopal.</p>
+                        <a href="clubs.html#aalekhya" class="btn btn-sm btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="club-preview-card">
+                        <img src="assets/img/alankar.png" alt="Alankaar Club" class="club-preview-img">
+                        <h3 class="club-title">Alankaar Club</h3>
+                        <p class="club-description">Music and performance arts society.</p>
+                        <a href="clubs.html#alankaar" class="btn btn-sm btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="club-preview-card">
+                        <img src="assets/img/debsoc.png" alt="Debate Society" class="club-preview-img">
+                        <h3 class="club-title">Debate Society</h3>
+                        <p class="club-description">Platform for intellectual discourse.</p>
+                        <a href="clubs.html#debate" class="btn btn-sm btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </div>
+
+    <!-- Rest of the content continues outside the wrapper -->
+    <section class="achievements-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Our Achievements</h2>
+            <div class="row counters text-center">
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="counter">
+                        <i class="icon ion-person"></i>
+                        <h3 class="counter-number">500+</h3>
+    </section>
+
+    <!-- Remove the newsletter section and go straight to footer -->
+    <footer class="footer-basic" id="contact">
+        <!-- ... existing footer ... -->
+        <div class="social">
+            <!-- other social links if any -->
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+
+        // Animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all elements that need animation
+            const animateElements = document.querySelectorAll('.animate-on-scroll, .feature-card, .event-card, .counter, .club-preview-card');
+            
+            function checkScroll() {
+                animateElements.forEach((element, index) => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight * 0.85) {
+                        // Add delay based on element index for cascade effect
+                        setTimeout(() => {
+                            element.classList.add('visible');
+                        }, 150 * (index % 3)); // Reset delay every 3 elements
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', checkScroll);
+            checkScroll(); // Initial check
+        });
+
+        // Text expansion animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const falcText = document.querySelector('.falc-text');
+            const fullText = falcText.getAttribute('data-text');
+            
+            // Get all elements that need animation
+            setTimeout(() => {
+                falcText.textContent = fullText;
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
+
+            const animateElements = document.querySelectorAll('.animate-on-scroll, .feature-card, .event-card, .counter, .club-preview-card');
+            
+            function checkScroll() {
+                animateElements.forEach((element, index) => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight * 0.85) {
+                        // Add delay based on element index for cascade effect
+                        setTimeout(() => {
+                            element.classList.add('visible');
+                        }, 150 * (index % 3)); // Reset delay every 3 elements
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', checkScroll);
+            checkScroll(); // Initial check
+        });
+
+        // Text expansion animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const falcText = document.querySelector('.falc-text');
+            const fullText = falcText.getAttribute('data-text');
+            
+            setTimeout(() => {
+                falcText.textContent = fullText;
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

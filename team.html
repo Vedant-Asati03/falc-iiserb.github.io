@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>FALC - Our Team</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/Footer-Basic.css">
+    <link rel="stylesheet" href="assets/css/Header-Blue.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="homepage.css">
+
+    <style>
+        :root {
+            --primary: #2D3047;
+            --secondary: #419D78;
+            --accent: #E0A458;
+            --text-light: #FFFFFF;
+            --text-dark: #2D3047;
+            --gradient-primary: linear-gradient(135deg, #2D3047 0%, #419D78 100%);
+            --primary-rgb: 45, 48, 71;
+            --secondary-rgb: 65, 157, 120;
+        }
+
+        .team-section {
+            padding: 80px 0;
+            background: var(--gradient-primary);
+            min-height: 100vh;
+        }
+
+        .section-title {
+            color: white;
+            text-align: center;
+            margin-bottom: 50px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .section-title.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .team-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: all 0.5s ease;
+            cursor: pointer;
+        }
+
+        .team-card.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .member-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 4px solid var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover .member-image {
+            transform: scale(1.1);
+            border-color: white;
+        }
+
+        .member-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .member-role {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            margin-bottom: 15px;
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            font-size: 1rem;
+            margin: 1rem 0;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--secondary);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            color: var(--text-dark);
+            transform: translateY(-3px);
+        }
+
+        .team-category {
+            color: white;
+            text-align: center;
+            margin: 50px 0 30px;
+            font-size: 2rem;
+            font-weight: 600;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+            padding-top: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .team-category.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .executive-card {
+            background: rgba(var(--primary-rgb), 0.2);
+            border: 2px solid var(--accent);
+            transform: translateY(0);
+        }
+
+        .executive-card:hover {
+            transform: translateY(-15px);
+            border-color: var(--secondary);
+        }
+
+        .executive-card .member-image {
+            border-width: 5px;
+            width: 180px;
+            height: 180px;
+        }
+
+        .core-card {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .core-card:hover {
+            background: rgba(var(--secondary-rgb), 0.2);
+        }
+
+        .executive-card .member-role {
+            background: var(--accent);
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Copy the same header from your other pages -->
+    <header class="header-blue">
+        <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">
+                    <img src="assets/img/falclogo.png" style="width: 80px; height: 80px;">
+                </a>
+                <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="homepage.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="clubs.html">Clubs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="a/arts-and-letters.html">Arts & Letters</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="team.html">Team</a>
+                        </li>
+                    </ul>
+                    <a class="btn btn-light action-button" role="button" href="https://www.instagram.com/falc_iiserb"
+                        target="_blank">
+                        Follow us
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="team-section">
+        <div class="container">
+            <h1 class="section-title">Meet Our Team</h1>
+
+            <!-- Faculty Advisors -->
+            <h2 class="team-category">Faculty Advisors</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="team-card">
+                        <img src="assets/img/team/advisor1.jpg" alt="Faculty Advisor" class="member-image">
+                        <h3 class="member-name">Dr. Name Here</h3>
+                        <p class="member-role">Faculty Advisor</p>
+                        <div class="social-links">
+                            <a href="#"><i class="icon ion-email"></i></a>
+                            <a href="#"><i class="icon ion-social-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more faculty advisors as needed -->
+            </div>
+
+            <!-- Executive Leadership -->
+            <h2 class="team-category">Executive Committee</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-4">
+                    <div class="team-card executive-card">
+                        <img src="assets/img/team/secretary.jpg" alt="Secretary" class="member-image">
+                        <h3 class="member-name">Student Name</h3>
+                        <p class="member-role">Secretary</p>
+                        <div class="social-links">
+                            <a href="#"><i class="icon ion-social-instagram"></i></a>
+                            <a href="#"><i class="icon ion-email"></i></a>
+                            <a href="#"><i class="icon ion-social-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="team-card executive-card">
+                        <img src="assets/img/team/vice-secretary.jpg" alt="Vice Secretary" class="member-image">
+                        <h3 class="member-name">Student Name</h3>
+                        <p class="member-role">Vice Secretary</p>
+                        <div class="social-links">
+                            <a href="#"><i class="icon ion-social-instagram"></i></a>
+                            <a href="#"><i class="icon ion-email"></i></a>
+                            <a href="#"><i class="icon ion-social-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Core Committee -->
+            <h2 class="team-category">Core Committee</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="team-card core-card">
+                        <img src="assets/img/team/core-member.jpg" alt="Core Committee Member" class="member-image">
+                        <h3 class="member-name">Student Name</h3>
+                        <p class="member-role">Event Coordinator</p>
+                        <div class="social-links">
+                            <a href="#"><i class="icon ion-social-instagram"></i></a>
+                            <a href="#"><i class="icon ion-email"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more core committee members -->
+            </div>
+
+            <!-- Core Team -->
+            <h2 class="team-category">Core Team</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="team-card">
+                        <img src="assets/img/team/core1.jpg" alt="Core Team Member" class="member-image">
+                        <h3 class="member-name">Student Name</h3>
+                        <p class="member-role">President</p>
+                        <div class="social-links">
+                            <a href="#"><i class="icon ion-social-instagram"></i></a>
+                            <a href="#"><i class="icon ion-email"></i></a>
+                            <a href="#"><i class="icon ion-social-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more core team members -->
+            </div>
+
+            <!-- Club Coordinators -->
+            <h2 class="team-category">Club Coordinators</h2>
+            <div class="row">
+                <!-- Add club coordinators -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Copy the same footer from your other pages -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const animateElements = document.querySelectorAll('.team-card, .section-title, .team-category');
+
+            function checkScroll() {
+                animateElements.forEach((element, index) => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+
+                    if (elementTop < windowHeight * 0.85) {
+                        setTimeout(() => {
+                            element.classList.add('visible');
+                        }, 150 * index);
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', checkScroll);
+            checkScroll();
+        });
+    </script>
+</body>
+
+</html>

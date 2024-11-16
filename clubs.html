@@ -6,38 +6,518 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>FALC</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme&amp;display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alata&amp;display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Manrope&amp;display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/Footer-Basic.css">
     <link rel="stylesheet" href="assets/css/Header-Blue.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="homepage.css">
+    <style>
+        /* Add color variables */
+        :root {
+            --primary: #2D3047;
+            --secondary: #419D78;
+            --accent: #E0A458;
+            --text-light: #FFFFFF;
+            --text-dark: #2D3047;
+            --gradient-primary: linear-gradient(135deg, #2D3047 0%, #419D78 100%);
+        }
+
+        .club-section {
+            padding: 80px 0;
+            background: var(--gradient-primary);
+            min-height: 100vh;
+        }
+
+        .club-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;  /* Increased from 30px */
+            margin-bottom: 30px;
+            color: white;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: all 0.5s ease;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .club-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            z-index: -1;
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+
+        .club-card.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .club-card:hover {
+            transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+            box-shadow: 0 20px 40px rgba(45, 48, 71, 0.3);
+        }
+
+        .club-card:hover::before {
+            opacity: 1;
+        }
+
+        .club-card:active {
+            transform: translateY(-5px) scale(0.95);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .club-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .club-title {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .club-description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .club-lead {
+            margin-top: 15px;
+            font-style: italic;
+            opacity: 0.8;
+        }
+
+        .section-header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .section-header.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .modal.club-modal {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.club-modal .modal-dialog {
+            max-width: 800px;
+            margin: 1.75rem auto;
+            transform: scale(0.8);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .modal.club-modal.show .modal-dialog {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .modal-content {
+            border: none;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+        }
+
+        .club-modal .modal-body {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .club-details {
+            width: 100%;
+            text-align: left;
+        }
+
+        .club-about {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .club-social {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .club-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--secondary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .club-social a:hover {
+            transform: translateY(-3px);
+            background: var(--accent);
+        }
+
+        /* Ripple Effect */
+        .club-card .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+            pointer-events: none;
+        }
+
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        .card-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .click-hint {
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .club-card:hover .card-overlay {
+            opacity: 1;
+        }
+
+        .club-card:hover .click-hint {
+            transform: translateY(0);
+        }
+
+        /* Keyboard focus styles */
+        .club-card:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+        }
+
+        .club-card:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+        }
+    </style>
 </head>
 
 <body>
-    <header class="header-blue">
+    <header>  <!-- Removed class="header-blue" -->
         <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
-            <div class="container-fluid"><a class="navbar-brand" href="#" style="padding: 5px 50px 10px 30px;font-size: 71px;"><img src="assets/img/falcbw_logo.png" style="width: 100px;height: 100px;margin-right: 30px;">FALC&nbsp;<em>Clubs</em></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navcol-1" style="margin-left: 30px;">
-                    <ul class="navbar-nav" style="padding: 10px;font-size: 36px;">
-                        <li class="nav-item"><a class="nav-link" href="#" style="border-style: solid;border-radius: 14px;text-align: center;">Home</a></li>
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">
+                    <img src="assets/img/falclogo.png" style="width: 80px; height: 80px;">
+                </a>
+                <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="homepage.html">Home</a>  <!-- Changed from index.html -->
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="clubs.html">Clubs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="arts-and-letters.html">Arts & Letters</a>  <!-- Removed 'a/' prefix -->
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="team.html">Team</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="gallery.html">Gallery</a>  <!-- Changed from '#' to gallery.html -->
+                        </li>
                     </ul>
-                    <ul class="navbar-nav" style="padding: 10px;font-size: 36px;">
-                        <li class="nav-item"><a class="nav-link raise-nav" href="#" style="border-style: solid;border-radius: 14px;text-align: center;">Arts &amp; Letters</a></li>
-                    </ul>
-                    <ul class="navbar-nav" style="padding: 10px;font-size: 36px;">
-                        <li class="nav-item"><a class="nav-link" href="#" style="border-style: solid;border-radius: 14px;text-align: center;">Gallery</a></li>
-                    </ul>
-                    <form class="d-flex me-auto navbar-form" target="_self">
-                        <div class="d-flex align-items-center"><label class="form-label d-flex mb-0" for="search-field"></label></div>
-                    </form><span class="navbar-text"></span><a class="btn btn-light action-button" role="button" href="#" style="transform: scale(1.20);border-style: dashed;border-radius: 30px;">Follow us</a>
+                    <a class="btn btn-light action-button" role="button" 
+                       href="https://www.instagram.com/falc_iiserb" target="_blank">
+                        Follow us
+                    </a>
                 </div>
             </div>
         </nav>
     </header>
+
+    <section class="club-section">
+        <div class="container">
+            <div class="section-header">
+                <h1>Our Clubs</h1>
+                <p class="lead">Discover your passion and express your creativity</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-4">
+                    <div class="club-card" data-bs-toggle="modal" data-bs-target="#aalekhyaModal" tabindex="0" role="button">
+                        <img src="assets/img/aalekhya.png" class="club-logo" alt="Aalekhya Club">
+                        <h3 class="club-title">Aalekhya Club</h3>
+                        <div class="card-overlay">
+                            <span class="click-hint">Click to learn more</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="club-card" data-bs-toggle="modal" data-bs-target="#alankaarModal">
+                        <img src="assets/img/alankar.png" class="club-logo" alt="Alankaar Club">
+                        <h3 class="club-title">Alankaar Club</h3>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="club-card" data-bs-toggle="modal" data-bs-target="#bookClubModal">
+                        <img src="assets/img/bookclub.jpg" class="club-logo" alt="Book Club">
+                        <h3 class="club-title">Book Club</h3>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="club-card" data-bs-toggle="modal" data-bs-target="#debateModal">
+                        <img src="assets/img/debsoc.png" class="club-logo" alt="Debate Society">
+                        <h3 class="club-title">Debate Society</h3>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="club-card" data-bs-toggle="modal" data-bs-target="#ibqcModal">
+                        <img src="assets/img/ibqc.png" class="club-logo" alt="IBQC">
+                        <h3 class="club-title">IBQC</h3>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="club-card" data-bs-toggle="modal" data-bs-target="#comixModal">
+                        <img src="assets/img/comix.png" class="club-logo" alt="Comix Club">
+                        <h3 class="club-title">Comix Club</h3>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="club-card" data-bs-toggle="modal" data-bs-target="#wordsmithModal">
+                        <img src="assets/img/wordsmiths.png" class="club-logo" alt="Wordsmith Club">
+                        <h3 class="club-title">Wordsmith Club</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modals -->
+    <div class="modal club-modal fade" id="aalekhyaModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Aalekhya Club</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="assets/img/aalekhya.png" class="modal-club-logo" alt="Aalekhya Club">
+                    <div class="club-details">
+                        <h4>The Fine Arts Club</h4>
+                        <p class="club-description">
+                            Aalekhya is IISER Bhopal's premier fine arts club, fostering creativity and artistic expression across campus.
+                        </p>
+                        <div class="club-about">
+                            <h5>About Us</h5>
+                            <p>We provide a platform for artists to explore various mediums and techniques, from traditional painting to digital art. Our community celebrates creativity in all its forms.</p>
+                            <h6>Activities:</h6>
+                            <ul>
+                                <li>Regular art workshops</li>
+                                <li>Exhibition opportunities</li>
+                                <li>Collaborative projects</li>
+                                <li>Art competitions</li>
+                            </ul>
+                        </div>
+                        <div class="club-social">
+                            <a href="#" target="_blank"><i class="icon ion-social-instagram"></i></a>
+                            <a href="#" target="_blank"><i class="icon ion-email"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateElements = document.querySelectorAll('.club-card, .section-header');
+            
+            function checkScroll() {
+                animateElements.forEach((element, index) => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight * 0.85) {
+                        setTimeout(() => {
+                            element.classList.add('visible');
+                        }, 150 * index);
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', checkScroll);
+            checkScroll();
+
+            // Modal functionality
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                modal.addEventListener('show.bs.modal', function() {
+                    this.querySelector('.modal-content').style.opacity = 0;
+                    setTimeout(() => {
+                        this.querySelector('.modal-content').style.opacity = 1;
+                        this.querySelector('.modal-content').style.transform = 'translateY(0)';
+                    }, 50);
+                });
+            });
+
+            // Enhanced modal animations
+            const clubModals = document.querySelectorAll('.club-modal');
+            
+            clubModals.forEach(modal => {
+                modal.addEventListener('show.bs.modal', function() {
+                    this.querySelector('.modal-dialog').style.transform = 'scale(0.8)';
+                    this.querySelector('.modal-dialog').style.opacity = '0';
+                    
+                    setTimeout(() => {
+                        this.querySelector('.modal-dialog').style.transform = 'scale(1)';
+                        this.querySelector('.modal-dialog').style.opacity = '1';
+                    }, 200);
+                });
+
+                modal.addEventListener('hide.bs.modal', function() {
+                    this.querySelector('.modal-dialog').style.transform = 'scale(0.8)';
+                    this.querySelector('.modal-dialog').style.opacity = '0';
+                });
+            });
+
+            // Add ripple effect to cards
+            const cards = document.querySelectorAll('.club-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    let rect = card.getBoundingClientRect();
+                    let x = e.clientX - rect.left;
+                    let y = e.clientY - rect.top;
+                    
+                    let ripple = document.createElement('span');
+                    ripple.className = 'ripple';
+                    ripple.style.left = `${x}px`;
+                    ripple.style.top = `${y}px`;
+                    
+                    card.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+
+                // Add hover effect
+                card.addEventListener('mousemove', function(e) {
+                    let rect = card.getBoundingClientRect();
+                    let x = e.clientX - rect.left;
+                    let y = e.clientY - rect.top;
+                    
+                    let centerX = rect.width / 2;
+                    let centerY = rect.height / 2;
+                    
+                    let angleX = (y - centerY) / 30;
+                    let angleY = (centerX - x) / 30;
+                    
+                    card.style.transform = `translateY(-10px) rotateX(${angleX}deg) rotateY(${angleY}deg)`;
+                });
+
+                card.addEventListener('mouseleave', function() {
+                    card.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
+                });
+            });
+        });
+    </script>
+
+    <style>
+        .club-card {
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .club-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .club-logo {
+            width: 150px;  /* Increased from 80px */
+            height: 150px; /* Increased from 80px */
+            margin-bottom: 20px;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .club-logo:hover {
+            transform: scale(1.1);
+        }
+
+        .modal-club-logo {
+            width: 200px;  /* Increased from 120px */
+            height: 200px; /* Increased from 120px */
+            margin-bottom: 30px;
+            border-radius: 50%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+        }
+
+        .modal-header {
+            border-bottom: none;
+            padding: 20px 30px;
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .modal-title {
+            color: #1e4f8a;
+            font-weight: 600;
+        }
+    </style>
 </body>
 
 </html>
