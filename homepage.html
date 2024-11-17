@@ -12,12 +12,22 @@
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="homepage.css">
     <style>
+        :root {
+            --primary: #2D3047;
+            --secondary: #FF6F61;
+            --accent: #FFD700;
+            --text-light: #FFFFFF;
+            --text-dark: #2D3047;
+            --gradient-primary: linear-gradient(135deg, #2D3047 0%, #FF6F61 100%);
+        }
+
         .hero-section {
             min-height: 100vh;
             position: relative;
             overflow: hidden;
-            padding-top: 80px;  /* Matches navbar height */
-            margin-top: -80px;  /* Pulls section up under navbar */
+            padding-top: 80px;
+            margin-top: -80px;
+            background: var(--gradient-primary);
         }
 
         .hero-section::before {
@@ -32,6 +42,7 @@
             background-size: cover;
             background-repeat: no-repeat;
             z-index: 1;
+            opacity: 0.3;
         }
 
         .hero-section::after {
@@ -41,7 +52,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(30, 79, 138, 0.85) 0%, rgba(41, 128, 185, 0.85) 100%);
+            background: linear-gradient(135deg, rgba(45, 48, 71, 0.85) 0%, rgba(255, 111, 97, 0.85) 100%);
             z-index: 2;
         }
 
@@ -478,6 +489,44 @@
         .featured-clubs-section {
             margin-top: 80px;
         }
+
+        /* Decorative Elements */
+        .decorative-element {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .decorative-element:nth-child(1) {
+            top: 10%;
+            left: 20%;
+            animation-delay: 0s;
+        }
+
+        .decorative-element:nth-child(2) {
+            top: 30%;
+            right: 20%;
+            animation-delay: 2s;
+        }
+
+        .decorative-element:nth-child(3) {
+            bottom: 20%;
+            left: 10%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
     </style>
 </head>
 
@@ -520,6 +569,9 @@
 
     <!-- Wrap the sections with background image -->
     <div class="bg-wrapper">
+        <div class="decorative-element"></div>
+        <div class="decorative-element"></div>
+        <div class="decorative-element"></div>
         <section class="hero-section">
             <div class="container hero-content">
                 <div class="row align-items-center">
@@ -568,30 +620,30 @@
         </section>
 
         <section class="container my-5 featured-clubs-section">
-            <h2 class="text-center mb-4">Featured Clubs</h2>
+            <h2 class="text-center mb-4">Upcoming Events</h2>
             <div class="row">
                 <div class="col-md-4 mb-4">
-                    <div class="club-preview-card">
-                        <img src="assets/img/aalekhya.png" alt="Aalekhya Club" class="club-preview-img">
-                        <h3 class="club-title">Aalekhya Club</h3>
-                        <p class="club-description">The Fine Arts Club of IISER Bhopal.</p>
-                        <a href="clubs.html#aalekhya" class="btn btn-sm btn-outline-primary">Learn More</a>
+                    <div class="event-card">
+                        <img src="assets/img/event1.jpg" alt="Event 1" class="club-preview-img">
+                        <h3 class="club-title">Event 1</h3>
+                        <p class="club-description">Description of Event 1.</p>
+                        <a href="#" class="btn btn-sm btn-outline-primary">Learn More</a>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <div class="club-preview-card">
-                        <img src="assets/img/alankar.png" alt="Alankaar Club" class="club-preview-img">
-                        <h3 class="club-title">Alankaar Club</h3>
-                        <p class="club-description">Music and performance arts society.</p>
-                        <a href="clubs.html#alankaar" class="btn btn-sm btn-outline-primary">Learn More</a>
+                    <div class="event-card">
+                        <img src="assets/img/event2.jpg" alt="Event 2" class="club-preview-img">
+                        <h3 class="club-title">Event 2</h3>
+                        <p class="club-description">Description of Event 2.</p>
+                        <a href="#" class="btn btn-sm btn-outline-primary">Learn More</a>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <div class="club-preview-card">
-                        <img src="assets/img/debsoc.png" alt="Debate Society" class="club-preview-img">
-                        <h3 class="club-title">Debate Society</h3>
-                        <p class="club-description">Platform for intellectual discourse.</p>
-                        <a href="clubs.html#debate" class="btn btn-sm btn-outline-primary">Learn More</a>
+                    <div class="event-card">
+                        <img src="assets/img/event3.jpg" alt="Event 3" class="club-preview-img">
+                        <h3 class="club-title">Event 3</h3>
+                        <p class="club-description">Description of Event 3.</p>
+                        <a href="#" class="btn btn-sm btn-outline-primary">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -650,39 +702,6 @@
             const fullText = falcText.getAttribute('data-text');
             
             // Get all elements that need animation
-            setTimeout(() => {
-                falcText.textContent = fullText;
-            }, 1000);
-        });
-    </script>
-</body>
-</html>
-
-            const animateElements = document.querySelectorAll('.animate-on-scroll, .feature-card, .event-card, .counter, .club-preview-card');
-            
-            function checkScroll() {
-                animateElements.forEach((element, index) => {
-                    const elementTop = element.getBoundingClientRect().top;
-                    const windowHeight = window.innerHeight;
-                    
-                    if (elementTop < windowHeight * 0.85) {
-                        // Add delay based on element index for cascade effect
-                        setTimeout(() => {
-                            element.classList.add('visible');
-                        }, 150 * (index % 3)); // Reset delay every 3 elements
-                    }
-                });
-            }
-
-            window.addEventListener('scroll', checkScroll);
-            checkScroll(); // Initial check
-        });
-
-        // Text expansion animation
-        document.addEventListener('DOMContentLoaded', function() {
-            const falcText = document.querySelector('.falc-text');
-            const fullText = falcText.getAttribute('data-text');
-            
             setTimeout(() => {
                 falcText.textContent = fullText;
             }, 1000);

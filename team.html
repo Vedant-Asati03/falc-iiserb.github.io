@@ -16,13 +16,11 @@
     <style>
         :root {
             --primary: #2D3047;
-            --secondary: #419D78;
-            --accent: #E0A458;
+            --secondary: #FF6F61;
+            --accent: #FFD700;
             --text-light: #FFFFFF;
             --text-dark: #2D3047;
-            --gradient-primary: linear-gradient(135deg, #2D3047 0%, #419D78 100%);
-            --primary-rgb: 45, 48, 71;
-            --secondary-rgb: 65, 157, 120;
+            --gradient-primary: linear-gradient(135deg, #2D3047 0%, #FF6F61 100%);
         }
 
         .team-section {
@@ -175,11 +173,48 @@
             color: var(--text-dark);
             font-weight: 600;
         }
+
+        /* Decorative Elements */
+        .decorative-element {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .decorative-element:nth-child(1) {
+            top: 10%;
+            left: 20%;
+            animation-delay: 0s;
+        }
+
+        .decorative-element:nth-child(2) {
+            top: 30%;
+            right: 20%;
+            animation-delay: 2s;
+        }
+
+        .decorative-element:nth-child(3) {
+            bottom: 20%;
+            left: 10%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
     </style>
 </head>
 
 <body>
-    <!-- Copy the same header from your other pages -->
     <header class="header-blue">
         <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
             <div class="container-fluid">
@@ -213,98 +248,103 @@
         </nav>
     </header>
 
-    <section class="team-section">
-        <div class="container">
-            <h1 class="section-title">Meet Our Team</h1>
+    <div class="bg-wrapper">
+        <div class="decorative-element"></div>
+        <div class="decorative-element"></div>
+        <div class="decorative-element"></div>
+        <section class="team-section">
+            <div class="container">
+                <h1 class="section-title">Meet Our Team</h1>
 
-            <!-- Faculty Advisors -->
-            <h2 class="team-category">Faculty Advisors</h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="team-card">
-                        <img src="assets/img/team/advisor1.jpg" alt="Faculty Advisor" class="member-image">
-                        <h3 class="member-name">Dr. Name Here</h3>
-                        <p class="member-role">Faculty Advisor</p>
-                        <div class="social-links">
-                            <a href="#"><i class="icon ion-email"></i></a>
-                            <a href="#"><i class="icon ion-social-linkedin"></i></a>
+                <!-- Faculty Advisors -->
+                <h2 class="team-category">Faculty Advisors</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="team-card">
+                            <img src="assets/img/team/advisor1.jpg" alt="Faculty Advisor" class="member-image">
+                            <h3 class="member-name">Dr. Name Here</h3>
+                            <p class="member-role">Faculty Advisor</p>
+                            <div class="social-links">
+                                <a href="#"><i class="icon ion-email"></i></a>
+                                <a href="#"><i class="icon ion-social-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add more faculty advisors as needed -->
+                </div>
+
+                <!-- Executive Leadership -->
+                <h2 class="team-category">Executive Committee</h2>
+                <div class="row justify-content-center">
+                    <div class="col-md-4">
+                        <div class="team-card executive-card">
+                            <img src="assets/img/team/secretary.jpg" alt="Secretary" class="member-image">
+                            <h3 class="member-name">Student Name</h3>
+                            <p class="member-role">Secretary</p>
+                            <div class="social-links">
+                                <a href="#"><i class="icon ion-social-instagram"></i></a>
+                                <a href="#"><i class="icon ion-email"></i></a>
+                                <a href="#"><i class="icon ion-social-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="team-card executive-card">
+                            <img src="assets/img/team/vice-secretary.jpg" alt="Vice Secretary" class="member-image">
+                            <h3 class="member-name">Student Name</h3>
+                            <p class="member-role">Vice Secretary</p>
+                            <div class="social-links">
+                                <a href="#"><i class="icon ion-social-instagram"></i></a>
+                                <a href="#"><i class="icon ion-email"></i></a>
+                                <a href="#"><i class="icon ion-social-linkedin"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- Add more faculty advisors as needed -->
-            </div>
 
-            <!-- Executive Leadership -->
-            <h2 class="team-category">Executive Committee</h2>
-            <div class="row justify-content-center">
-                <div class="col-md-4">
-                    <div class="team-card executive-card">
-                        <img src="assets/img/team/secretary.jpg" alt="Secretary" class="member-image">
-                        <h3 class="member-name">Student Name</h3>
-                        <p class="member-role">Secretary</p>
-                        <div class="social-links">
-                            <a href="#"><i class="icon ion-social-instagram"></i></a>
-                            <a href="#"><i class="icon ion-email"></i></a>
-                            <a href="#"><i class="icon ion-social-linkedin"></i></a>
+                <!-- Core Committee -->
+                <h2 class="team-category">Core Committee</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="team-card core-card">
+                            <img src="assets/img/team/core-member.jpg" alt="Core Committee Member" class="member-image">
+                            <h3 class="member-name">Student Name</h3>
+                            <p class="member-role">Event Coordinator</p>
+                            <div class="social-links">
+                                <a href="#"><i class="icon ion-social-instagram"></i></a>
+                                <a href="#"><i class="icon ion-email"></i></a>
+                            </div>
                         </div>
                     </div>
+                    <!-- Add more core committee members -->
                 </div>
-                <div class="col-md-4">
-                    <div class="team-card executive-card">
-                        <img src="assets/img/team/vice-secretary.jpg" alt="Vice Secretary" class="member-image">
-                        <h3 class="member-name">Student Name</h3>
-                        <p class="member-role">Vice Secretary</p>
-                        <div class="social-links">
-                            <a href="#"><i class="icon ion-social-instagram"></i></a>
-                            <a href="#"><i class="icon ion-email"></i></a>
-                            <a href="#"><i class="icon ion-social-linkedin"></i></a>
+
+                <!-- Core Team -->
+                <h2 class="team-category">Core Team</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="team-card">
+                            <img src="assets/img/team/core1.jpg" alt="Core Team Member" class="member-image">
+                            <h3 class="member-name">Student Name</h3>
+                            <p class="member-role">President</p>
+                            <div class="social-links">
+                                <a href="#"><i class="icon ion-social-instagram"></i></a>
+                                <a href="#"><i class="icon ion-email"></i></a>
+                                <a href="#"><i class="icon ion-social-linkedin"></i></a>
+                            </div>
                         </div>
                     </div>
+                    <!-- Add more core team members -->
+                </div>
+
+                <!-- Club Coordinators -->
+                <h2 class="team-category">Club Coordinators</h2>
+                <div class="row">
+                    <!-- Add club coordinators -->
                 </div>
             </div>
-
-            <!-- Core Committee -->
-            <h2 class="team-category">Core Committee</h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="team-card core-card">
-                        <img src="assets/img/team/core-member.jpg" alt="Core Committee Member" class="member-image">
-                        <h3 class="member-name">Student Name</h3>
-                        <p class="member-role">Event Coordinator</p>
-                        <div class="social-links">
-                            <a href="#"><i class="icon ion-social-instagram"></i></a>
-                            <a href="#"><i class="icon ion-email"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Add more core committee members -->
-            </div>
-
-            <!-- Core Team -->
-            <h2 class="team-category">Core Team</h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="team-card">
-                        <img src="assets/img/team/core1.jpg" alt="Core Team Member" class="member-image">
-                        <h3 class="member-name">Student Name</h3>
-                        <p class="member-role">President</p>
-                        <div class="social-links">
-                            <a href="#"><i class="icon ion-social-instagram"></i></a>
-                            <a href="#"><i class="icon ion-email"></i></a>
-                            <a href="#"><i class="icon ion-social-linkedin"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Add more core team members -->
-            </div>
-
-            <!-- Club Coordinators -->
-            <h2 class="team-category">Club Coordinators</h2>
-            <div class="row">
-                <!-- Add club coordinators -->
-            </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
     <!-- Copy the same footer from your other pages -->
 
